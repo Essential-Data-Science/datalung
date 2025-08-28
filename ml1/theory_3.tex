@@ -1,0 +1,78 @@
+
+\documentclass[13pt,compress]{beamer}
+% deactivate beamer navigation
+%\setbeamertemplate{navigation symbols}{}
+%\usepackage{geometry}
+%\geometry{papersize={180mm, 135mm}, top=-1.5mm} % 210mm, 297mm
+
+\usepackage[nospeakermargin]{../../style/lmu-lecture}
+
+\setbeamertemplate{frametitle}{\expandafter\uppercase\expandafter\insertframetitle}
+%\useoutertheme{metropolis}
+% remove section slides
+\AtBeginSection[]
+{
+  \begin{frame}<beamer>
+    \frametitle{Part 3}
+    \tableofcontents[currentsection]
+  \end{frame}
+}
+% includepdf slides, pagecommad will set counter for framenumber
+\usepackage{pdfpages}
+\includepdfset{trim=0mm 0mm 0mm 0mm, pagecommand={\global\setcounter{framenumber}{\value{page}}}}
+% trim=0mm 6mm 0mm 0mm, offset=0 15,
+% add footer:
+\usepackage{framed, color}
+\usepackage{xcolor}
+%\iffalse
+\setbeamertemplate{footline}[text line]{%
+    \noindent\hspace*{\dimexpr-\oddsidemargin-1in\relax}%
+     \colorbox{white}{
+     \makebox[\dimexpr\paperwidth-2\fboxsep\relax]{
+     \color{black}
+     \begin{minipage}[c][4.5ex][c]{0.5\linewidth}
+       \secname
+     \end{minipage}
+     \hfill\begin{minipage}[c][4.5ex][c]{0.5\linewidth}
+       \flushright
+       \insertframenumber{}~/~\inserttotalframenumber~~
+     \end{minipage}
+     }}%
+  \hspace*{-\paperwidth}
+}
+%\fi
+
+\title{Introduction to Machine Learning\\with R and mlr3}
+\author{Bernd Bischl \& Marvin N. Wright}
+%\institute{Essential Data Science Training}
+\date{DAGStat, March 2025}
+
+
+
+\begin{document}
+\setbeamercolor{background canvas}{bg=}
+
+% General remark: hyperlinks in included pdfs are not clickable anymore in the combined pdf
+
+\frame{\titlepage}
+
+\section{Hyperparameter Tuning}
+\includepdf[pages={2-last}, trim=0mm 0mm 45mm 0mm]{../../material/lecture_i2ml/slides-pdf/slides-tuning-intro.pdf}
+\includepdf[pages={2-last}, trim=0mm 0mm 45mm 0mm]{../../material/lecture_i2ml/slides-pdf/slides-tuning-tuningproblem.pdf}
+\includepdf[pages={2-last}, trim=0mm 0mm 45mm 0mm]{../../material/lecture_i2ml/slides-pdf/slides-tuning-basicalgos.pdf}
+\includepdf[pages={2-last}, trim=0mm 0mm 45mm 0mm]{../../material/lecture_i2ml/slides-pdf/slides-tuning-advanced.pdf}
+%\section{Tuning with mlr3tuning}
+%\includepdf[pages={6-7, 12-19, 22, 24-30, 32-35, 38-40, 43-52}]{../../material/mlr-doc/CURRENT_mlr3_course/02_mlr3tuning/mlr3tuning.pdf}
+%\section{Exercise: Tuning with mlr3tuning}
+%\begin{frame}{Exercise: Tuning with mlr3tuning}
+%File: \textit{day2\_tuning.html}
+%\end{frame}
+\section{Nested Resampling}
+\includepdf[pages={2-last}, trim=0mm 0mm 45mm 0mm]{../../material/lecture_i2ml/slides-pdf/slides-nested-nestedintro.pdf}
+\includepdf[pages={2-last}, trim=0mm 0mm 45mm 0mm]{../../material/lecture_i2ml/slides-pdf/slides-nested-trainvalidtest.pdf}
+\includepdf[pages={2-last}, trim=0mm 0mm 45mm 0mm]{../../material/lecture_i2ml/slides-pdf/slides-nested-nestedresampling.pdf}
+
+\section{Pipelines and AutoML}
+\includepdf[pages={2-last}, trim=0mm 0mm 45mm 0mm]{../../material/lecture_i2ml/slides-pdf/slides-tuning-pipelines.pdf}
+
+\end{document}
