@@ -325,6 +325,42 @@
 \defbeamertemplate*{headline}{lecture theme}{}
 
 
+% includepdf slides, pagecommad will set counter for framenumber
+\usepackage{pdfpages}
+\makeatletter
+\let\ORIincludepdf\includepdf
+\DeclareRobustCommand{\includepdf}[2][]{%
+  \setcounter{page}{1}%
+  \ORIincludepdf[#1]{#2}%
+}
+\makeatother
+
+% Global settings
+\includepdfset{
+  trim=0mm 0mm 0mm 0mm,
+  pagecommand={%
+    \global\setcounter{framenumber}{\value{page}}%
+    \IncludePDFNumberFoot
+  }
+}
+\usepackage{tikz}
+
+\makeatletter
+% Overlay a tiny footer number; if speaker margin is active, keep it inside \slidewidth
+\newcommand{\IncludePDFNumberFoot}{%
+  \begin{tikzpicture}[remember picture,overlay]
+    \if@speakermargin
+      % place inside the content area (left of the speaker margin)
+      \node[anchor=south east,font=\tiny,inner sep=1.5mm, color = red]
+        at ([xshift=-\speakerwidth-2mm,yshift=1.5mm]current page.south east) {\theframenumber};
+    \else
+      % full-width slides: use the page corner
+      \node[anchor=south east,font=\tiny,inner sep=1.5mm, color = red]
+        at ([xshift=-2mm,yshift=1.5mm]current page.south east) {\theframenumber};
+    \fi
+  \end{tikzpicture}%
+}
+\makeatother
 
 % ------------------------------------------------------------------------
 \endinput

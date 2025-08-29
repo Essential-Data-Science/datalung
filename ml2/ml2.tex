@@ -18,8 +18,9 @@
   \end{frame}
 }
 % includepdf slides, pagecommad will set counter for framenumber
-\usepackage{pdfpages}
-\includepdfset{trim=0mm 0mm 0mm 0mm, pagecommand={\global\setcounter{framenumber}{\value{page}}}}
+
+
+
 % trim=0mm 6mm 0mm 0mm, offset=0 15,
 % add footer:
 \usepackage{framed, color}
@@ -75,9 +76,9 @@
 % General remark: hyperlinks in included pdfs are not clickable anymore in the combined pdf
 
 \frame{\titlepage}
-
+  \setcounter{page}{1}
 \includepdf[pages={1-last}, trim=0mm 0mm 45mm 0mm]{../slds-lecture-pdfs/lecture_i2ml/slides-pdf/slides-evaluation-generr.pdf}
-
+  \setcounter{page}{1}
 \includepdf[pages={1-last}, trim=0mm 0mm 45mm 0mm]{../slds-lecture-pdfs/lecture_i2ml/slides-pdf/slides-evaluation-measures-regression.pdf}
 
 \includepdf[pages={1-last}, trim=0mm 0mm 45mm 0mm]{../slds-lecture-pdfs/lecture_i2ml/slides-pdf/slides-evaluation-train.pdf}
